@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  server:
+    image: luizkrlz/images:node-tools
+    volumes:
+      - .:/home/app
+    ports:
+      - 3000:3000
+    tty: true
+
+  db:
+    image: mysql:5.5.51
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=snippetfy
