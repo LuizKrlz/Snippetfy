@@ -1,8 +1,8 @@
-version: '2'
+version: "2"
 
 services:
   server:
-    image: luizkrlz/images:node-tools
+    image: luizkrlz/environment
     volumes:
       - .:/home/app
     ports:
