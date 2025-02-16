@@ -1,4 +1,5 @@
-const { Category, Snippet } = require('../models');
+const { Category, Snippet } = require("../models");
+const { destroy } = require("./snippetController");
 
 module.exports = {
   async store(req, res, next) {
@@ -8,7 +9,7 @@ module.exports = {
         UserId: req.session.user.id,
       });
 
-      req.flash('success', 'Categoria criada com sucesso');
+      req.flash("success", "Categoria criada com sucesso");
 
       return res.redirect(`/app/categories/${category.id}`);
     } catch (error) {
@@ -22,15 +23,28 @@ module.exports = {
         where: { UserId: req.session.user.id },
       });
 
-      const snippets = await Snippet.findAll({ where: { CategoryId: req.params.id }});
+      const snippets = await Snippet.findAll({
+        where: { CategoryId: req.params.id },
+      });
 
-      return res.render('categories/show', {
+      return res.render("categories/show", {
         categories,
         snippets,
         activeCategory: req.params.id,
       });
     } catch (err) {
       return next();
+    }
+  },
+  async destroy(req, res, next) {
+    try {
+      await Category.destroy({ where: { id: req.params.id } });
+
+      req.flash("success", "Categoria removida com sucesso");
+
+      return res.redirect("/app/dashboard");
+    } catch (error) {
+      return next(error);
     }
   },
 };
