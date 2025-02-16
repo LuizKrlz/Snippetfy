@@ -8,11 +8,16 @@
 
     <ul>
       {% for category in categories %}
-      <li class="{% if category.id == activeCategory %}active {% endif %}">
+      <li class="{% if category.id == activeCategory %} active {% endif %}">
         <a href="/app/categories/{{ category.id }}">
           {{category.title}}
-          <span>{{ category.Snippet.length }}</span>
+          <span style="color: #f5f5f5;">{{ category.Snippets.length }}</span>
         </a>
+        <form action="/app/categories/{{ category.id }}/remover?_method=DELETE" method="POST">
+          <button class="btn-icon">
+            <i data-lucide="trash" class="trash-icon"></i>
+          </button
+        </form>
       </li>
       {% endfor %}
     </ul>
