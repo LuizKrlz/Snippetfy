@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700");
 
 html {
   overflow: hidden;
@@ -17,16 +17,17 @@ body {
 
 body {
   background-color: #f5f5f5;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
 }
 
 button {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: 0;
 }
 
@@ -36,12 +37,12 @@ input:focus, textarea:focus {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: #143D56;
+  background: #143d56;
 }
 
 .auth-wrapper form {
   padding: 30px;
-  background: #FFF;
+  background: #fff;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
@@ -61,23 +62,23 @@ input:focus, textarea:focus {
   font-size: 16px;
   margin: 0 0 15px;
   border-radius: 8px;
-  border: 1px solid #DDD;
+  border: 1px solid #ddd;
 }
 
 .auth-wrapper form button {
   padding: 15px 20px;
-  background: #0AC699;
+  background: #0ac699;
   border-radius: 3px;
   border: 0;
   font-size: 16px;
   font-weight: bold;
-  color: #FFF;
+  color: #fff;
   cursor: pointer;
   margin: 0 0 15px;
 }
 
 .auth-wrapper form button:hover {
-  background: #0EB18A;
+  background: #0eb18a;
 }
 
 .auth-wrapper form a {
@@ -95,18 +96,18 @@ input:focus, textarea:focus {
   min-width: 300px;
   right: 20px;
   top: 20px;
-  background: #0AC699;
-  color: #FFF;
+  background: #0ac699;
+  color: #fff;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   font-size: 14px;
-  transition: all .2s;
+  transition: all 0.2s;
   opacity: 1;
 }
 
 .alert-danger {
-  background: #CC6161;
+  background: #cc6161;
 }
 
 .alert-hidden {
@@ -120,24 +121,24 @@ input:focus, textarea:focus {
 
 .wrapper nav#main {
   min-width: 300px;
-  background: #143D56;
-  color: #FFF;
+  background: #143d56;
+  color: #fff;
 }
 
 .wrapper .snippets-list {
   width: 370px;
-  background: #FFF;
-  border-left: 1px solid #DDD;
-  border-right: 1px solid #DDD;
+  background: #fff;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
   margin: 0 10px;
   overflow-y: scroll;
 }
 
 .wrapper .snippet-content {
   flex: 1;
-  background: #FFF;
-  border-left: 1px solid #DDD;
-  border-right: 1px solid #DDD;
+  background: #fff;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
 
 .wrapper nav#main .header {
@@ -154,7 +155,7 @@ input:focus, textarea:focus {
 }
 
 .wrapper nav#main .header a {
-  color: #F57777;
+  color: #f57777;
   text-decoration: none;
   font-size: 16px;
 }
@@ -172,17 +173,24 @@ input:focus, textarea:focus {
   list-style: none;
 }
 
-.wrapper nav#main .categories ul li a {
-  color: #FFF;
-  font-size: 16px;
-  text-decoration: none;
-  display: block;
-  padding: 12px 30px;
+.wrapper nav#main .categories ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
 }
 
-.wrapper nav#main .categories ul li.active a,
-.wrapper nav#main .categories ul li a:hover {
+.wrapper nav#main .categories ul li.active,
+.wrapper nav#main .categories ul li:hover {
   background: rgba(0, 0, 0, 0.2);
+}
+
+.wrapper nav#main .categories ul li a {
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  flex: 1;
+  padding: 12px 30px;
 }
 
 .wrapper nav#main .categories ul li span {
@@ -194,23 +202,23 @@ input:focus, textarea:focus {
   line-height: 40px;
   display: block;
   border-radius: 3px;
-  background: #38A4E6;
-  color: #FFF;
+  background: #38a4e6;
+  color: #fff;
   text-decoration: none;
   text-align: center;
   font-weight: bold;
   font-size: 16px;
   margin: 20px 30px 0;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 .wrapper nav#main .categories > a:hover {
-  background: #3293CF;
+  background: #3293cf;
 }
 
 .wrapper .snippets-list .list-header {
   padding: 20px 20px;
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid #ddd;
 }
 
 .wrapper .snippets-list .list-header a {
@@ -218,22 +226,22 @@ input:focus, textarea:focus {
   line-height: 50px;
   display: block;
   border-radius: 3px;
-  background: #0AC699;
-  color: #FFF;
+  background: #0ac699;
+  color: #fff;
   text-decoration: none;
   text-align: center;
   font-weight: bold;
   font-size: 16px;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 .wrapper .snippets-list .list-header a:hover {
-  background: #0BAB85;
+  background: #0bab85;
 }
 
 .wrapper .snippets-list > a {
   padding: 20px;
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid #ddd;
   display: block;
   color: #666666;
   text-decoration: none;
@@ -246,7 +254,7 @@ input:focus, textarea:focus {
 
 .wrapper .snippets-list > a.active {
   background: #fafafa;
-  border-left-color: #0AC699;
+  border-left-color: #0ac699;
 }
 
 .wrapper .snippets-list > a strong {
@@ -271,13 +279,13 @@ input:focus, textarea:focus {
 }
 
 .wrapper .snippet-content a {
-  color: #48A2D9;
+  color: #48a2d9;
   font-size: 16px;
   text-decoration: none;
 }
 
 .wrapper .snippet-content form button {
-  color: #F57777;
+  color: #f57777;
   font-size: 14px;
   border: 0;
   margin-left: 10px;
@@ -298,7 +306,7 @@ input:focus, textarea:focus {
   margin: 0 0 20px;
   line-height: 24px;
 }
-
+.wrapper .snippet-content .content ol,
 .wrapper .snippet-content .content ul {
   margin: 0 0 20px 20px;
 }
@@ -327,7 +335,7 @@ input:focus, textarea:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: ease .2s;
+  transition: ease 0.2s;
   transform: translateY(100%);
 }
 
@@ -339,7 +347,7 @@ input:focus, textarea:focus {
   max-width: 700px;
   width: 100%;
   max-height: 100%;
-  background: #FFF;
+  background: #fff;
   padding: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
@@ -350,7 +358,7 @@ input:focus, textarea:focus {
 
 .modal-content input,
 .modal-content textarea {
-  border: 1px solid #DDD;
+  border: 1px solid #ddd;
   padding: 20px;
   margin: 0 0 10px;
   font-size: 16px;
@@ -359,7 +367,7 @@ input:focus, textarea:focus {
 
 .CodeMirror,
 .CodeMirror-scroll {
-    max-height: 300px;
+  max-height: 300px;
 }
 
 .modal-content button {
@@ -367,20 +375,20 @@ input:focus, textarea:focus {
   line-height: 50px;
   display: block;
   border-radius: 3px;
-  background: #0AC699;
-  color: #FFF;
+  background: #0ac699;
+  color: #fff;
   text-decoration: none;
   text-align: center;
   font-weight: bold;
   font-size: 16px;
-  transition: all .2s;
+  transition: all 0.2s;
   border: 0;
   cursor: pointer;
   margin: 10px 0 10px;
 }
 
 .modal-content button:hover {
-  background: #0BAB85;
+  background: #0bab85;
 }
 
 .modal-content > a {
@@ -388,13 +396,13 @@ input:focus, textarea:focus {
   line-height: 50px;
   display: block;
   border-radius: 3px;
-  background: #DDD;
+  background: #ddd;
   color: #999;
   text-decoration: none;
   text-align: center;
   font-weight: bold;
   font-size: 16px;
-  transition: all .2s;
+  transition: all 0.2s;
   border: 0;
 }
 
@@ -404,4 +412,16 @@ input:focus, textarea:focus {
 
 #new-snippet form {
   /* min-height: 650px; */
+}
+
+.btn-icon {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.trash-icon {
+  color: white;
+  height: 15px;
+  width: 15px;
 }
