@@ -1,14 +1,20 @@
 import { z } from "zod";
 
-/** Legado: POST /register — auth/signup.njk */
+/** Legacy: POST /register — auth/signup.njk */
 export const registerSchema = z.object({
-  name: z.string().min(1, "Nome é obrigatório"),
-  email: z.string().email("E-mail inválido"),
-  password: z.string().min(6, "Senha deve ter no mínimo 6 caracteres"),
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
-/** Legado: POST /authenticate — auth/signin.njk */
+/** Legacy: POST /authenticate — auth/signin.njk */
 export const loginSchema = z.object({
-  email: z.string().email("E-mail inválido"),
-  password: z.string().min(1, "Senha é obrigatória"),
+  email: z.string().email("Invalid email"),
+  password: z.string().min(1, "Password is required"),
+});
+
+export const userPublicSchema = z.object({
+  id: z.number(),
+  name: z.string().nullable(),
+  email: z.string().email(),
 });

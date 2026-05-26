@@ -23,13 +23,22 @@ cp .env.example .env
 docker compose up --build
 ```
 
-Open http://localhost:5173 — the status page should show API and PostgreSQL as **Online**.
+Open http://localhost:5173. Seed a dev user (optional):
+
+```bash
+pnpm db:seed
+# testeuser@mail.com / 123456
+```
 
 Stop:
 
 ```bash
 docker compose down
 ```
+
+## Environment
+
+Keep a single `.env` at the **repository root** (used by Docker Compose and `pnpm db:*` scripts). Prisma runs inside `apps/api/` but loads variables from the root file via `dotenv-cli`.
 
 ## Local development (without Docker)
 
@@ -42,6 +51,7 @@ docker compose up db -d
 
 pnpm --filter @snippetfy/shared build
 pnpm db:migrate
+pnpm db:seed
 pnpm dev
 ```
 
@@ -60,7 +70,7 @@ mcp-server/     MCP for legacy codebase analysis
 ## Migration phases
 
 - [x] **Phase 0** — Monorepo, Prisma, isolated Docker, health checks
-- [ ] **Phase 1** — Authentication (JWT)
+- [x] **Phase 1** — Authentication (JWT + TanStack Router)
 - [ ] **Phase 2** — Categories
 - [ ] **Phase 3** — Snippets
 - [ ] **Phase 4** — Retire legacy
@@ -72,5 +82,6 @@ pnpm docker:up       # compose up --build
 pnpm docker:down
 pnpm db:migrate      # prisma migrate deploy
 pnpm db:migrate:dev  # create migration in dev
+pnpm db:seed         # dev user (testeuser@mail.com / 123456)
 pnpm db:studio       # Prisma Studio
 ```

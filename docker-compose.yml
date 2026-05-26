@@ -37,6 +37,10 @@ services:
       NODE_ENV: development
       PORT: 4000
       DATABASE_URL: postgresql://${POSTGRES_USER:-snippetfy}:${POSTGRES_PASSWORD:-snippetfy}@db:5432/${POSTGRES_DB:-snippetfy}
+      JWT_SECRET: ${JWT_SECRET:-dev-jwt-secret-change-in-production}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
+      COOKIE_NAME: ${COOKIE_NAME:-snippetfy_token}
+      WEB_ORIGIN: ${WEB_ORIGIN:-http://localhost:5173}
     depends_on:
       db:
         condition: service_healthy
