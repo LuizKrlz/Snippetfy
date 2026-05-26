@@ -5,6 +5,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 
 import { ApiClientError } from "../../lib/api-client.js";
+import { AppAlert, AppButton, AppInput, PageShell, SectionCard } from "../../components/ui";
 import { register } from "./api.js";
 import { authKeys } from "./queries.js";
 
@@ -18,7 +19,7 @@ export function SignupForm() {
     setError,
     formState: { errors },
   } = useForm<RegisterInput>({
-    resolver: zodResolver(registerSchema),
+    resolver: zodResolver(registerSchema as never),
   });
 
   const mutation = useMutation({
@@ -39,62 +40,55 @@ export function SignupForm() {
   });
 
   return (
-    <div className="auth-page">
-      <div className="auth-card">
-        <h1>Create account</h1>
-        <p className="hint">Start organizing your snippets</p>
-
+    <PageShell centered size="sm">
+      <SectionCard
+        className="max-w-md"
+        description="Start organizing your snippets"
+        title="Create account"
+      >
         <form
-          className="auth-form"
+          className="grid gap-5"
           onSubmit={handleSubmit((data) => mutation.mutate(data))}
         >
           {errors.root && (
-            <p className="form-error" role="alert">
+            <AppAlert tone="danger" title="Unable to create account">
               {errors.root.message}
-            </p>
+            </AppAlert>
           )}
 
-          <label>
-            Name
-            <input type="text" autoComplete="name" {...registerField("name")} />
-            {errors.name && (
-              <span className="field-error">{errors.name.message}</span>
-            )}
-          </label>
+          <AppInput
+            autoComplete="name"
+            errorMessage={errors.name?.message}
+            label="Name"
+            type="text"
+            {...registerField("name")}
+          />
 
-          <label>
-            Email
-            <input
-              type="email"
-              autoComplete="email"
-              {...registerField("email")}
-            />
-            {errors.email && (
-              <span className="field-error">{errors.email.message}</span>
-            )}
-          </label>
+          <AppInput
+            autoComplete="email"
+            errorMessage={errors.email?.message}
+            label="Email"
+            type="email"
+            {...registerField("email")}
+          />
 
-          <label>
-            Password
-            <input
-              type="password"
-              autoComplete="new-password"
-              {...registerField("password")}
-            />
-            {errors.password && (
-              <span className="field-error">{errors.password.message}</span>
-            )}
-          </label>
+          <AppInput
+            autoComplete="new-password"
+            errorMessage={errors.password?.message}
+            label="Password"
+            type="password"
+            {...registerField("password")}
+          />
 
-          <button className="btn-primary" type="submit" disabled={mutation.isPending}>
+          <AppButton className="w-full" isLoading={mutation.isPending} type="submit">
             {mutation.isPending ? "Creating…" : "Create account"}
-          </button>
+          </AppButton>
         </form>
 
-        <p className="auth-footer">
+        <p className="mt-6 text-center text-sm text-slate-400">
           Already have an account? <Link to="/login">Sign in</Link>
         </p>
-      </div>
-    </div>
+      </SectionCard>
+    </PageShell>
   );
 }
