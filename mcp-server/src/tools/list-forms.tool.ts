@@ -20,7 +20,7 @@ export function registerListFormsTool(
           .describe("Filtrar por pasta da feature: auth, categories, snippets"),
       },
     },
-    async ({ feature }) => {
+    async ({ feature }: { feature?: string }) => {
       const forms = await context.getAllForms();
 
       if (!feature) {

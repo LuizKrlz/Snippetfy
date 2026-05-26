@@ -16,7 +16,7 @@ export function registerReadMigrationTool(
         path: z.string().describe("Path relativo à pasta legacy-app"),
       },
     },
-    async ({ path }) => {
+    async ({ path }: { path: string }) => {
       const content = await fsAdapter.readFile(path);
 
       return {

@@ -15,7 +15,7 @@ export function registerReadViewTool(
         path: z.string(),
       },
     },
-    async ({ path }) => {
+    async ({ path }: { path: string }) => {
       const content = await fsAdapter.readFile(path);
 
       return {

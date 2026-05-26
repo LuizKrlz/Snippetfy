@@ -21,7 +21,7 @@ export function registerSearchTextTool(
           .describe("Pasta relativa a legacy-app. Padrão: app"),
       },
     },
-    async ({ text, folder }) => {
+    async ({ text, folder }: { text: string; folder?: string }) => {
       const targetFolder = folder ?? "app";
       const matches = await fsAdapter.searchTextRecursive(targetFolder, text);
 

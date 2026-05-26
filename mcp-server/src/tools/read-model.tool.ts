@@ -19,7 +19,7 @@ export function registerReadModelTool(
           .describe("Nome do model (User) ou path (app/models/user.js)"),
       },
     },
-    async ({ name }) => {
+    async ({ name }: { name: string }) => {
       const path = name.endsWith(".js")
         ? name
         : `app/models/${name.charAt(0).toLowerCase()}${name.slice(1)}.js`;

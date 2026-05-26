@@ -3,6 +3,8 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 
 import { FilesystemAdapter } from "./adapters/filesystem.adapter.js";
 import { LegacyContextService } from "./services/legacy-context.service.js";
+import { UiMappingService } from "./services/ui-mapping.service.js";
+import { registerCompareUiTargetsTool } from "./tools/compare-ui-targets.tool.js";
 import { registerExtractApiContractTool } from "./tools/extract-api-contract.tool.js";
 import { registerGetDataSchemaTool } from "./tools/get-data-schema.tool.js";
 import { registerGetFeatureMapTool } from "./tools/get-feature-map.tool.js";
@@ -11,6 +13,7 @@ import { registerListMigrationsTool } from "./tools/list-migrations.tool.js";
 import { registerListModelsTool } from "./tools/list-models.tool.js";
 import { registerListRoutesTool } from "./tools/list-routes.tool.js";
 import { registerListViewsTool } from "./tools/list-views.tool.js";
+import { registerMapUiComponentsTool } from "./tools/map-ui-components.tool.js";
 import { registerReadControllerTool } from "./tools/read-controller.tool.js";
 import { registerReadMigrationTool } from "./tools/read-migration.tool.js";
 import { registerReadModelTool } from "./tools/read-model.tool.js";
@@ -27,6 +30,7 @@ async function bootstrap() {
 
   const fsAdapter = new FilesystemAdapter(LEGACY_ROOT);
   const context = new LegacyContextService(fsAdapter);
+  const uiMapping = new UiMappingService(context, fsAdapter);
 
   registerListViewsTool(server, fsAdapter);
   registerReadViewTool(server, fsAdapter);
@@ -43,6 +47,8 @@ async function bootstrap() {
   registerListMigrationsTool(server, context);
   registerReadMigrationTool(server, fsAdapter);
   registerListFormsTool(server, context);
+  registerMapUiComponentsTool(server, uiMapping);
+  registerCompareUiTargetsTool(server, uiMapping);
 
   const transport = new StdioServerTransport();
 

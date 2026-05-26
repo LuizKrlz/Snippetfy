@@ -22,7 +22,7 @@ export function registerTraceRequestFlowTool(
           .describe("Path da requisição, ex: /app/categories/1/snippets/2"),
       },
     },
-    async ({ method, path }) =>
+    async ({ method, path }: { method: string; path: string }) =>
       jsonToolResponse(await context.traceRequestFlow(method, path)),
   );
 }

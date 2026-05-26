@@ -22,7 +22,7 @@ export function registerExtractApiContractTool(
           ),
       },
     },
-    async ({ feature }) => {
+    async ({ feature }: { feature?: string }) => {
       const contracts = await context.extractApiContracts();
 
       if (feature) {
