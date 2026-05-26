@@ -1,58 +1,76 @@
-# SnippetFy
+# Snippetfy v2
 
-A web application to store and organize your development code snippets.
+The new Snippetfy stack (SPA + API), **separate** from the legacy app in [`legacy-app/`](legacy-app/).
 
-![SnippetFy Preview](/support/screen1.png)
+| Service    | Local URL              |
+|------------|------------------------|
+| Web (Vite) | http://localhost:5173  |
+| API (Hono) | http://localhost:4000  |
+| PostgreSQL | localhost:**5433**     |
 
-## Features
+The legacy app remains in `legacy-app/` with MySQL on port 3306 — no port conflicts.
 
-- Create and manage code snippets
-- Organize snippets by categories
-- Edit and remove snippets
-- User authentication system
-- Clean and intuitive interface
+## Prerequisites
 
-## Getting Started
+- [Docker](https://docs.docker.com/get-docker/) and Docker Compose
+- (Optional) Node 20+ and [pnpm](https://pnpm.io) for development outside Docker
 
-### Prerequisites
-
-- Docker and Docker Compose installed on your machine
-
-### Installation
-
-1. Clone the repository
-2. Start the Docker containers:
-
-```sh
-docker-compose up -d
-```
-
-3. Access the server container and set up the application:
+## Run with Docker (recommended)
 
 ```bash
-# Enter the container
-docker-compose exec server bash
-
-# Install dependencies
-npm install
-
-# Run database migrations
-node_modules/.bin/sequelize db:migrate
-
-# Seed initial data
-node_modules/.bin/sequelize db:seed:all
-
-# Start development server
-npm run dev
+# From the repository root
+cp .env.example .env
+docker compose up --build
 ```
 
-### Default Access
+Open http://localhost:5173 — the status page should show API and PostgreSQL as **Online**.
 
-You can login with the following credentials:
+Stop:
 
-- Email: testeuser@mail.com
-- Password: 123456
+```bash
+docker compose down
+```
 
-## License
+## Local development (without Docker)
 
-This project is open source and available under the [MIT License](LICENSE).
+```bash
+pnpm install
+cp .env.example .env
+
+# Postgres on port 5433 (or adjust DATABASE_URL in .env)
+docker compose up db -d
+
+pnpm --filter @snippetfy/shared build
+pnpm db:migrate
+pnpm dev
+```
+
+## Monorepo structure
+
+```
+apps/
+  api/          Hono + Prisma + PostgreSQL
+  web/          Vite + React (SPA)
+packages/
+  shared/       Shared Zod schemas and types
+legacy-app/     Old stack (not used by the root compose file)
+mcp-server/     MCP for legacy codebase analysis
+```
+
+## Migration phases
+
+- [x] **Phase 0** — Monorepo, Prisma, isolated Docker, health checks
+- [ ] **Phase 1** — Authentication (JWT)
+- [ ] **Phase 2** — Categories
+- [ ] **Phase 3** — Snippets
+- [ ] **Phase 4** — Retire legacy
+
+## Useful scripts
+
+```bash
+pnpm docker:up       # compose up --build
+pnpm docker:down
+pnpm db:migrate      # prisma migrate deploy
+pnpm db:migrate:dev  # create migration in dev
+pnpm db:studio       # Prisma Studio
+```
