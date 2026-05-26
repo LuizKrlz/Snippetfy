@@ -5,6 +5,7 @@ import { LibraryPage } from "../features/categories/LibraryPage.js";
 
 type LibrarySearch = {
   categoryId?: number;
+  snippetId?: number;
 };
 
 export const Route = createFileRoute("/library")({
@@ -16,6 +17,14 @@ export const Route = createFileRoute("/library")({
             Number.isInteger(search.categoryId) &&
             search.categoryId > 0
           ? search.categoryId
+          : undefined,
+    snippetId:
+      typeof search.snippetId === "string" && /^\d+$/.test(search.snippetId)
+        ? Number(search.snippetId)
+        : typeof search.snippetId === "number" &&
+            Number.isInteger(search.snippetId) &&
+            search.snippetId > 0
+          ? search.snippetId
           : undefined,
   }),
   beforeLoad: async ({ context }) => {

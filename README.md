@@ -71,8 +71,8 @@ mcp-server/     MCP for legacy codebase analysis
 
 - [x] **Phase 0** — Monorepo, Prisma, isolated Docker, health checks
 - [x] **Phase 1** — Authentication (JWT + TanStack Router)
-- [ ] **Phase 2** — Categories
-- [ ] **Phase 3** — Snippets
+- [x] **Phase 2** — Categories
+- [x] **Phase 3** — Snippets
 - [ ] **Phase 4** — Retire legacy
 
 ## Useful scripts

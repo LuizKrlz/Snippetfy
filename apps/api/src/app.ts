@@ -4,6 +4,7 @@ import { cors } from "hono/cors";
 import { authRoutes } from "./features/auth/auth.routes.js";
 import { categoriesRoutes } from "./features/categories/categories.routes.js";
 import { healthRoutes } from "./features/health/health.routes.js";
+import { snippetsRoutes } from "./features/snippets/snippets.routes.js";
 import { ApiError } from "./lib/api-error.js";
 import { env } from "./lib/env.js";
 
@@ -20,6 +21,7 @@ app.use(
 app.route("/", healthRoutes);
 app.route("/", authRoutes);
 app.route("/", categoriesRoutes);
+app.route("/", snippetsRoutes);
 
 app.notFound((c) => c.json({ error: "Not found" }, 404));
 

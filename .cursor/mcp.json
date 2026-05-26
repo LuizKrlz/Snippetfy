@@ -6,6 +6,10 @@
         "./mcp-server/node_modules/tsx/dist/cli.mjs",
         "./mcp-server/src/index.ts"
       ]
+    },
+    "heroui-react": {
+      "command": "npx",
+      "args": ["-y", "@heroui/react-mcp@latest"]
     }
   }
 }

@@ -7,6 +7,7 @@ import type {
 } from "../schemas/category.schema.js";
 import type {
   createSnippetSchema,
+  snippetCategoryParamsSchema,
   updateSnippetSchema,
   snippetParamsSchema,
 } from "../schemas/snippet.schema.js";
@@ -17,6 +18,7 @@ export type CreateCategoryInput = z.infer<typeof createCategorySchema>;
 export type CategoryIdParam = z.infer<typeof categoryIdSchema>;
 export type CreateSnippetInput = z.infer<typeof createSnippetSchema>;
 export type UpdateSnippetInput = z.infer<typeof updateSnippetSchema>;
+export type SnippetCategoryParams = z.infer<typeof snippetCategoryParamsSchema>;
 export type SnippetParams = z.infer<typeof snippetParamsSchema>;
 
 export type UserPublic = {
@@ -49,6 +51,23 @@ export type SnippetDto = {
   categoryId: number;
   createdAt: string;
   updatedAt: string;
+};
+
+export type SnippetListItemDto = {
+  id: number;
+  title: string;
+  excerpt: string;
+  categoryId: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type SnippetResponse = {
+  snippet: SnippetDto;
+};
+
+export type SnippetsResponse = {
+  snippets: SnippetListItemDto[];
 };
 
 export type ApiHealth = {
