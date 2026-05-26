@@ -34,6 +34,14 @@ export type CategoryDto = {
   snippetCount?: number;
 };
 
+export type CategoryResponse = {
+  category: CategoryDto;
+};
+
+export type CategoriesResponse = {
+  categories: CategoryDto[];
+};
+
 export type SnippetDto = {
   id: number;
   title: string;

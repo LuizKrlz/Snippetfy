@@ -1,10 +1,10 @@
-import type { ApiErrorBody, AuthErrorCode } from "@snippetfy/shared";
+import type { ApiErrorBody, AppErrorCode } from "@snippetfy/shared";
 
 export class ApiError extends Error {
   constructor(
     public status: number,
     message: string,
-    public code?: AuthErrorCode,
+    public code?: AppErrorCode,
     public details?: unknown,
   ) {
     super(message);
