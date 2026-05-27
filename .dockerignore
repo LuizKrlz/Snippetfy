@@ -3,8 +3,6 @@ node_modules
 **/dist
 .git
 .cursor
-legacy-app
-mcp-server
 **/.env
 **/.env.local
 *.log
