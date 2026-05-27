@@ -1,5 +1,7 @@
 # Snippetfy v2
 
+V1 are in **master** branch
+
 This repository evolved through phases to reach a single modern stack (SPA + API), based on **PostgreSQL**.
 
 ## How it was (before Phase 4)
